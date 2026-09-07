@@ -176,7 +176,9 @@
   .brand {
     font-family: 'Port Lligat Slab', serif; font-size: 1.15rem; color: var(--ink);
     flex: none; white-space: nowrap; align-self: center;
+    border: none; background: none; padding: 0; cursor: pointer;
   }
+  .brand:hover { color: var(--accent-ink); }
   .site-nav { display: flex; gap: 32px; flex: none; }
   .site-nav button {
     display: flex; align-items: center; justify-content: center;
@@ -429,7 +431,7 @@
 
 <div class="seasons" id="siteBar">
   <div class="nav-inner">
-    <div class="brand">Aussie Produce Guide</div>
+    <button type="button" class="brand" id="brandLink">Aussie Produce Guide</button>
     <nav class="site-nav" aria-label="Site">
       <button id="navHome" type="button" aria-current="page">Home</button>
       <button id="navCalendar" type="button">Calendar</button>
@@ -1054,12 +1056,15 @@ const ITEM_COPY = {
   const homeView = document.getElementById('homeView');
   const calendarPage = document.getElementById('calendarPage');
 
-  navHome.addEventListener('click', () => {
+  function goToHome(){
     navHome.setAttribute('aria-current', 'page');
     navCalendar.removeAttribute('aria-current');
     homeView.style.display = '';
     calendarPage.style.display = 'none';
-  });
+    window.scrollTo(0, 0);
+  }
+  navHome.addEventListener('click', goToHome);
+  document.getElementById('brandLink').addEventListener('click', goToHome);
   function goToCalendar(){
     navCalendar.setAttribute('aria-current', 'page');
     navHome.removeAttribute('aria-current');
