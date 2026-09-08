@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
 <title>Australian Produce Calendar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -352,7 +353,7 @@
   @media (max-width: 480px) {
     /* drop the shared-column table for a card list: name on its own line, months as a self-contained strip below */
     .p-row { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px; }
-    .p-row-label { grid-column: 1 / -1; justify-content: flex-start; padding: 6px 10px; margin-bottom: 4px; }
+    .p-row-label { grid-column: 1 / -1; justify-content: flex-start; padding: 6px 10px; margin-bottom: var(--space-sm); }
     .p-name { display: block; font-size: 0.86rem; }
     .p-icon { width: 30px; height: 30px; border-radius: var(--radius-md); }
     .p-icon svg { width: 20px; height: 20px; }
@@ -360,7 +361,7 @@
     .m-head .full { display: none; }
     .m-head .short { display: inline; }
     .cell { height: 22px; border-radius: var(--radius-sm); }
-    .p-row + .p-row { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-default); }
+    .p-row + .p-row { margin-top: var(--space-lg); }
   }
 
   /* ---------- month view ---------- */
@@ -376,7 +377,7 @@
   .month-picker button[aria-pressed="true"] { background: var(--text-primary); border-color: var(--text-primary); color: var(--background-surface); }
 
   .month-select {
-    display: none; width: 100%; font-family: 'DM Mono', monospace; font-size: 13px;
+    display: none; width: 100%; font-family: 'DM Sans', sans-serif; font-size: 13px;
     color: var(--text-primary); background: var(--background-surface); border: 1px solid var(--border-default);
     border-radius: 10px; padding: 11px 34px 11px 14px; margin-bottom: var(--space-sm); appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%23506D69' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -749,7 +750,7 @@
     {n:'Avocado', c:'#7AAA6B', m:[1,2,4,5,6,7,8,10,11]},
     {n:'Bananas', c:'#C9C44A', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Blood oranges', c:'#C4837B', m:[8,9]},
-    {n:'Blueberries', c:'#7AAA6B', m:[10,11,12,1,2]},
+    {n:'Blueberries', c:'#8D7FA0', m:[10,11,12,1,2]},
     {n:'Cherries', c:'#C4837B', m:[11,12,1]},
     {n:'Custard apple', c:'#C9C44A', m:[4,5,6,7,8]},
     {n:'Durian', c:'#C9C44A', m:[6,7,8,9]},
