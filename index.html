@@ -9,7 +9,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-41K3NMW1EG');
+  gtag('config', 'G-41K3NMW1EG', { send_page_view: false });
 </script>
 <title>Australian Produce Calendar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -663,6 +663,14 @@
   function trackEvent(name, params){
     if (typeof gtag === 'function') gtag('event', name, params || {});
   }
+  function trackPageView(path, title){
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'page_view', {
+      page_title: title,
+      page_path: path,
+      page_location: location.origin + location.pathname + (path === '/' ? '' : path)
+    });
+  }
 
   const ITEM_ICONS = {
     'Apples': '<svg viewBox="4 4 32 32"><path id="Stem (Stroke)" d="M20 13C20 11.3669 20.9587 9.87146 22.0664 8.83301C23.1648 7.80332 24.6477 7 26 7C26.5523 7 27 7.44772 27 8C27 8.55228 26.5523 9 26 9C25.3523 9 24.3352 9.44676 23.4336 10.292C22.5414 11.1285 22 12.1332 22 13C22 13.5523 21.5523 14 21 14C20.4477 14 20 13.5523 20 13Z" fill="#A88B5A"/><path id="Apple" d="M20 32C29 32 28.6 27.2249 30 22C31.4 16.7751 31 15 28 12C25 9 22 11 20 12C18 11 14 10 12 12C10 14 8.55308 16.6 10 22C11.4469 27.4 11 32 20 32Z" fill="#DC0900"/><path id="Vector" d="M24.4 16.2C25.7255 16.2 26.8 15.4837 26.8 14.6C26.8 13.7163 25.7255 13 24.4 13C23.0745 13 22 13.7163 22 14.6C22 15.4837 23.0745 16.2 24.4 16.2Z" fill="white" fill-opacity="0.5"/></svg>',
@@ -1255,6 +1263,7 @@ const ITEM_COPY = {
     );
   }
   renderHome();
+  trackPageView('/', 'Home');
 
   // view toggle
   const btnCalendar = document.getElementById('btnCalendar');
@@ -1290,7 +1299,7 @@ const ITEM_COPY = {
     homeView.style.display = '';
     calendarPage.style.display = 'none';
     window.scrollTo(0, 0);
-    trackEvent('nav_home');
+    trackPageView('/', 'Home');
   }
   navHome.addEventListener('click', goToHome);
   document.getElementById('brandLink').addEventListener('click', goToHome);
@@ -1304,7 +1313,7 @@ const ITEM_COPY = {
     calendarView.style.display = '';
     monthView.style.display = 'none';
     window.scrollTo(0, 0);
-    trackEvent('nav_calendar');
+    trackPageView('/calendar', 'Calendar');
   }
   navCalendar.addEventListener('click', goToCalendar);
   document.getElementById('viewFullCalendarBtn').addEventListener('click', goToCalendar);
