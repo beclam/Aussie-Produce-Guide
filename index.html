@@ -636,8 +636,8 @@
 
   <footer>
     <p>Every fruit and vegetable mapped across the calendar year so you can see exactly when it peaks. Southern-hemisphere timing, general across temperate regions &mdash; your local greengrocer's dates may run a few weeks either side.</p>
-    <p><strong>Note on timing.</strong> Australia spans tropical, temperate and arid climates, so a crop's window can shift by several weeks between, say, Queensland and Tasmania. A handful of items (avocado, mushroom, banana) run close to year-round &mdash; treat this as a general shopping compass, not a fixed timetable, and your local market as the final word. Icons are original illustrations, not photographs.</p>
-    <p><strong>Source.</strong> Month ranges are cross-checked against Sydney Markets' <a href="https://www.sydneymarkets.com/markets/produce-market/whats-in-season/" target="_blank" rel="noopener">What's In Season</a> guides, supplemented with general knowledge for varieties and niche items outside their published tables. Treat it as a well-informed guide rather than a precise forecast &mdash; growing conditions shift a crop's actual window from year to year. Picking tips reflect general, widely-known produce knowledge rather than a single external source.</p>
+    <p><strong>Note on timing.</strong> Australia spans tropical, temperate and arid climates, so a crop's window can shift by several weeks between, say, Queensland and Tasmania. A handful of items (avocado, mushroom, banana, carrots, broccolini) run close to year-round &mdash; treat this as a general shopping compass, not a fixed timetable, and your local market as the final word. Icons are original illustrations, not photographs.</p>
+    <p><strong>Source.</strong> Month ranges are cross-checked against Sydney Markets' <a href="https://www.sydneymarkets.com/markets/produce-market/whats-in-season/" target="_blank" rel="noopener">What's In Season</a> guides and Woolworths' <a href="https://www.woolworths.com.au/shop/explore/fruit-veg/guides" target="_blank" rel="noopener">seasonal produce guides</a>, supplemented with general knowledge for varieties and niche items outside their published tables. Treat it as a well-informed guide rather than a precise forecast &mdash; growing conditions shift a crop's actual window from year to year. Picking tips reflect general, widely-known produce knowledge rather than a single external source.</p>
     <p><strong>Privacy.</strong> This site uses Google Analytics to understand how it's used &mdash; pages visited, general location, and device type, via cookies. No accounts, payments, or sensitive personal data are collected. See Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> for details on how that data is handled.</p>
     <p><strong>Built with AI.</strong> This site was designed and built by Rebecca Lam, with Claude (Anthropic) used throughout as a hands-on collaborator for implementation, design-to-code syncing, and content drafting.</p>
     <p class="copyright">&copy; Rebecca Lam 2026. All rights reserved.</p>
@@ -780,8 +780,8 @@
     {n:'Grapefruit', c:'#C4837B', m:[6,7,8,9,10,11]},
     {n:'Grapes', c:'#8D7FA0', m:[12,1,2,3,4,5,6]},
     {n:'Kiwifruit', c:'#D4A35C', m:[3,4,5,6,7,8]},
-    {n:'Lemons', c:'#C9C44A', m:[5,6,7,8,9]},
-    {n:'Limes', c:'#7AAA6B', m:[1,2,3,4]},
+    {n:'Lemons', c:'#C9C44A', m:[3,4,5,6,7,8,9,10,11]},
+    {n:'Limes', c:'#7AAA6B', m:[1,2,3,4,5,6,7,8]},
     {n:'Longan', c:'#D4A35C', m:[2,3,4]},
     {n:'Loquat', c:'#D4A35C', m:[10,11]},
     {n:'Lychee', c:'#C4837B', m:[12,1,2]},
@@ -803,13 +803,13 @@
     {n:'Raspberries', c:'#C4837B', m:[12,1,2,3]},
     {n:'Rhubarb', c:'#C4837B', m:[5,6,7,8]},
     {n:'Rockmelon', c:'#D4A35C', m:[10,11,12,1,2]},
-    {n:'Strawberries', c:'#C4837B', m:[7,8,9,10,12,1,2]},
+    {n:'Strawberries', c:'#C4837B', m:[7,8,9,10,11,12,1,2]},
     {n:'Watermelon', c:'#7AAA6B', m:[10,11,12,1,2]},
     {n:'Dragonfruit', c:'#C4837B', m:[1,2,3,4]},
     {n:'Honeydew', c:'#C9C44A', m:[1,2,3,11,12]},
     {n:'Jackfruit', c:'#C9C44A', m:[1,2,3,4,12]},
     {n:'Mangosteen', c:'#C4837B', m:[1,2,11,12]},
-    {n:'Tomatoes', c:'#C4837B', m:[11,12,1,2,3]}
+    {n:'Tomatoes', c:'#C4837B', m:[9,10,11,12,1,2,3]}
   ].sort((a,b)=>a.n.localeCompare(b.n));
 
   const VEG = [
@@ -818,28 +818,28 @@
     {n:'Beetroot', c:'#C4837B', m:[6,7,8,9,10]},
     {n:'Broad beans', c:'#7AAA6B', m:[9,10]},
     {n:'Broccoli', c:'#7AAA6B', m:[3,4,5,6,7,8,9]},
-    {n:'Broccolini', c:'#7AAA6B', m:[3,4,5,6,7,8,9,10,11]},
-    {n:'Brussels sprouts', c:'#7AAA6B', m:[4,5,6,7,8]},
+    {n:'Broccolini', c:'#7AAA6B', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
+    {n:'Brussels sprouts', c:'#7AAA6B', m:[4,5,6,7,8,9,10,11]},
     {n:'Cabbage', c:'#7AAA6B', m:[4,5,6,7,8,10,11]},
     {n:'Capsicum', c:'#C4837B', m:[1,2,3,4,5,12]},
-    {n:'Carrots', c:'#C9C44A', m:[5,6,7,8,9]},
+    {n:'Carrots', c:'#C9C44A', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Cauliflower', c:'#D4A35C', m:[4,5,6,7,8,9]},
     {n:'Celery', c:'#7AAA6B', m:[12,1,2,5,6,7,8]},
     {n:'Chestnuts', c:'#D4A35C', m:[3,4,5]},
     {n:'Chilli', c:'#C4837B', m:[12,1,2,9,10,11]},
     {n:'Choko', c:'#7AAA6B', m:[2,3,4,5,6,7,8]},
     {n:'Cucumber', c:'#7AAA6B', m:[1,2,3,10,11,12]},
-    {n:'Eggplant', c:'#8D7FA0', m:[12,1,2,3,4,5]},
-    {n:'Fennel', c:'#D4A35C', m:[4,5,6,7,8,9,10]},
+    {n:'Eggplant', c:'#8D7FA0', m:[12,1,2,3,4,5,6,7,8]},
+    {n:'Fennel', c:'#D4A35C', m:[4,5,6,7,8,9,10,11]},
     {n:'Green beans', c:'#7AAA6B', m:[12,1,2,3,9,10,11]},
     {n:'Jerusalem artichoke', c:'#D4A35C', m:[6,7,8]},
     {n:'Kale', c:'#7AAA6B', m:[3,4,5,6,7,8,9,10]},
     {n:'Leek', c:'#7AAA6B', m:[4,5,6,7,8]},
     {n:'Lettuce', c:'#7AAA6B', m:[12,1,2,3,9,10,11]},
     {n:'Mushroom', c:'#D4A35C', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
-    {n:'Potatoes', c:'#D4A35C', m:[9,10,11,12]},
+    {n:'Potatoes', c:'#D4A35C', m:[6,7,8,9,10,11,12]},
     {n:'Okra', c:'#C9C44A', m:[1,2,3,4,5,8]},
-    {n:'Bok choy', c:'#7AAA6B', m:[3,4,5,9,10,11]},
+    {n:'Bok choy', c:'#7AAA6B', m:[3,4,5,6,7,8,9,10,11]},
     {n:'Parsnip', c:'#D4A35C', m:[5,6,7,8]},
     {n:'Peas', c:'#7AAA6B', m:[9,10,11,12,1]},
     {n:'Pumpkin', c:'#D4A35C', m:[3,4,5,6,7,8]},
@@ -849,7 +849,7 @@
     {n:'Snow peas', c:'#7AAA6B', m:[9,10,11,12]},
     {n:'Spinach', c:'#7AAA6B', m:[1,2,4,5,6,7,8,9,10,11,12]},
     {n:'Sugar snap peas', c:'#7AAA6B', m:[9,10,11,12]},
-    {n:'Sweet corn', c:'#C9C44A', m:[11,12,1,2,3]},
+    {n:'Sweet corn', c:'#C9C44A', m:[9,10,11,12,1,2,3]},
     {n:'Sweet potato', c:'#C4837B', m:[5,6,7,8]},
     {n:'Swede', c:'#D4A35C', m:[6,7,8]},
     {n:'Turnip', c:'#8D7FA0', m:[4,5,6,7,8]},
