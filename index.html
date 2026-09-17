@@ -226,9 +226,12 @@
   .modal-name {
     font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--font-size-display-sm); color: var(--text-primary); margin: 0;
   }
+  .modal-desc {
+    font-family: 'DM Sans', sans-serif; font-size: var(--font-size-body-md); color: var(--text-secondary); line-height: 1.5; margin: 0 0 var(--space-lg);
+  }
   .modal-eyebrow {
     font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-accent-brown); margin: 0;
+    color: var(--text-accent-brown); margin: 0 0 var(--space-sm);
   }
   .modal-pick {
     font-family: 'DM Sans', sans-serif; font-size: var(--font-size-body-md); color: var(--text-secondary); line-height: 1.5; margin: 0;
@@ -653,8 +656,9 @@
     <div class="modal-icon" id="modalIcon" aria-hidden="true"></div>
     <div class="modal-heading">
       <h3 class="modal-name" id="modalName"></h3>
-      <p class="modal-eyebrow">How to pick</p>
     </div>
+    <p class="modal-desc" id="modalDesc"></p>
+    <p class="modal-eyebrow">How to pick</p>
     <p class="modal-pick" id="modalPick"></p>
   </div>
 </div>
@@ -775,7 +779,7 @@
   const FRUIT = [
     {n:'Apples', c:'#C4837B', m:[3,4,5,6,7,8,9]},
     {n:'Apricots', c:'#D4A35C', m:[12,1]},
-    {n:'Avocado', c:'#7AAA6B', m:[1,2,4,5,6,7,8,10,11]},
+    {n:'Avocado', c:'#7AAA6B', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Bananas', c:'#C9C44A', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Blood oranges', c:'#C4837B', m:[8,9]},
     {n:'Blueberries', c:'#8D7FA0', m:[10,11,12,1,2]},
@@ -796,9 +800,9 @@
     {n:'Mango', c:'#D4A35C', m:[9,10,11,12,1,2]},
     {n:'Nashi', c:'#D4A35C', m:[2,3,4,5]},
     {n:'Nectarines', c:'#C4837B', m:[12,1,2]},
-    {n:'Oranges', c:'#D4A35C', m:[1,2,3,5,6,7,8,9,10,11,12]},
+    {n:'Oranges', c:'#D4A35C', m:[1,2,5,6,7,8,9,10,11,12]},
     {n:'Papaya', c:'#D4A35C', m:[3,9,10,11,12]},
-    {n:'Passionfruit', c:'#8D7FA0', m:[12,1,2,3,4,6,10,11]},
+    {n:'Passionfruit', c:'#8D7FA0', m:[12,1,2,3,4,5,6,10,11]},
     {n:'Peaches', c:'#D4A35C', m:[12,1,2]},
     {n:'Pears', c:'#7AAA6B', m:[1,2,3,4,5,6,7]},
     {n:'Persimmon', c:'#D4A35C', m:[4,5]},
@@ -831,7 +835,7 @@
     {n:'Broccoli', c:'#7AAA6B', m:[3,4,5,6,7,8,9]},
     {n:'Broccolini', c:'#7AAA6B', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Brussels sprouts', c:'#7AAA6B', m:[4,5,6,7,8,9,10,11]},
-    {n:'Cabbage', c:'#7AAA6B', m:[4,5,6,7,8,10,11]},
+    {n:'Cabbage', c:'#7AAA6B', m:[4,5,6,7,8,9,10,11]},
     {n:'Capsicum', c:'#C4837B', m:[1,2,3,4,5,12]},
     {n:'Carrots', c:'#C9C44A', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Cauliflower', c:'#D4A35C', m:[4,5,6,7,8,9]},
@@ -858,7 +862,7 @@
     {n:'Rocket', c:'#7AAA6B', m:[1,2,3,4,9,10,11,12]},
     {n:'Silverbeet', c:'#C9C44A', m:[4,5,6,7,8,9,10,11]},
     {n:'Snow peas', c:'#7AAA6B', m:[9,10,11,12]},
-    {n:'Spinach', c:'#7AAA6B', m:[1,2,4,5,6,7,8,9,10,11,12]},
+    {n:'Spinach', c:'#7AAA6B', m:[1,2,3,4,5,6,7,8,9,10,11,12]},
     {n:'Sugar snap peas', c:'#7AAA6B', m:[9,10,11,12]},
     {n:'Sweet corn', c:'#C9C44A', m:[9,10,11,12,1,2,3]},
     {n:'Sweet potato', c:'#C4837B', m:[5,6,7,8]},
@@ -1230,12 +1234,12 @@ const ITEM_COPY = {
   };
 
   function heroCardHTML(item){
-    const tip = ITEM_COPY[item.n].tip;
+    const pick = ITEM_PICK[item.n] || '';
     return `<div class="hero-card" data-item="${item.n}" tabindex="0">
       <div class="hero-card-art" style="--c-bg:${SEASON_BG[item.c]}">${ITEM_ICONS[item.n]}</div>
       <div class="hero-card-body">
         <span class="p-name">${item.n}</span>
-        <p>${tip}</p>
+        <p>${pick}</p>
       </div>
     </div>`;
   }
@@ -1359,6 +1363,7 @@ const ITEM_COPY = {
   const itemModal = document.getElementById('itemModal');
   const modalIcon = document.getElementById('modalIcon');
   const modalName = document.getElementById('modalName');
+  const modalDesc = document.getElementById('modalDesc');
   const modalPick = document.getElementById('modalPick');
   let lastFocused = null;
 
@@ -1369,6 +1374,7 @@ const ITEM_COPY = {
     modalIcon.innerHTML = ITEM_ICONS[item.n];
     modalIcon.style.setProperty('--c-bg', SEASON_BG[item.c]);
     modalName.textContent = item.n;
+    modalDesc.textContent = ITEM_COPY[item.n].tip;
     modalPick.textContent = ITEM_PICK[item.n] || '';
     itemModal.hidden = false;
     document.getElementById('modalClose').focus();
