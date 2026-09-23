@@ -1378,6 +1378,7 @@ const ITEM_COPY = {
     modalPick.textContent = ITEM_PICK[item.n] || '';
     itemModal.hidden = false;
     document.getElementById('modalClose').focus();
+    trackEvent('select_item', { item_name: item.n });
   }
   function closeItemModal(){
     itemModal.hidden = true;
