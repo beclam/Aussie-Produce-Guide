@@ -22,6 +22,7 @@
     --background-primary: #FFFFFF;
     --background-surface: #FDFEFE;
     --surface-2: #F9FCFB;
+    --icon-tint-base: #F9FCFB; /* fixed light base for illustration background tints — stays the same in dark mode */
     --text-primary: #223330;
     --text-secondary: #23514E; /* text/secondary */
     --border-default: #B0D5D0;      /* border/default */
@@ -219,7 +220,7 @@
   .modal-close svg { width: 14px; height: 14px; }
   .modal-icon {
     width: 64px; height: 64px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
-    margin-bottom: var(--space-md); background: color-mix(in srgb, var(--c-bg) 60%, var(--surface-2));
+    margin-bottom: var(--space-md); background: color-mix(in srgb, var(--c-bg) 60%, var(--icon-tint-base));
   }
   .modal-icon svg { width: 44px; height: 44px; }
   .modal-heading { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-md); }
@@ -319,7 +320,7 @@
   }
   .p-icon {
     flex: none; width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center;
-    background: color-mix(in srgb, var(--c-bg) 60%, var(--surface-2));
+    background: color-mix(in srgb, var(--c-bg) 60%, var(--icon-tint-base));
   }
   .p-icon svg { width: 29px; height: 29px; }
   .p-name {
@@ -441,7 +442,7 @@
   .hero-card .hero-card-art {
     height: 100px; width: 100%; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    background: color-mix(in srgb, var(--c-bg) 60%, var(--surface-2));
+    background: color-mix(in srgb, var(--c-bg) 60%, var(--icon-tint-base));
   }
   .hero-card .hero-card-art svg { width: 72px; height: 72px; }
   .hero-card-body { padding: 0; display: flex; flex-direction: column; gap: 6px; }
