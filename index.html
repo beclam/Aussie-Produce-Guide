@@ -340,11 +340,11 @@
   }
   .cell.on { background: var(--c); border-color: var(--c-stroke); }
 
-  /* current month (September): thicker cell border instead of a full column highlight */
-  .p-row:not(.p-header) > .cell:nth-child(10) { border-width: 4px; }
-  .p-row:not(.p-header) > .cell:nth-child(10):not(.on) { border-color: var(--border-focus); }
+  /* current month: thicker cell border instead of a full column highlight */
+  .p-row:not(.p-header) > .cell.current-month { border-width: 4px; }
+  .p-row:not(.p-header) > .cell.current-month:not(.on) { border-color: var(--border-focus); }
 
-  .p-row.p-header > *:nth-child(10) {
+  .p-row.p-header > .current-month {
     border-radius: 7px;
     background: var(--surface-2);
     box-shadow: 4px 0 0 var(--surface-2), -4px 0 0 var(--surface-2), var(--shadow);
@@ -901,12 +901,15 @@
     '#8D7FA0': '#DEDAE2', // lavender
   };
 
+  const TODAY_MONTH = new Date().getMonth() + 1; // "today" for Home — independent of whatever month is selected in the By Month view
+
   function rowHTML(item){
     let cells = '';
     for (let m = 1; m <= 12; m++) {
       const on = item.m.includes(m);
       const status = on ? 'in season' : 'out of season';
-      cells += `<div class="cell${on ? ' on' : ''}" role="cell" aria-label="${item.n}, ${MONTHS_LONG[m-1]}: ${status}"${on ? ` style="--c:${item.c};--c-stroke:${SEASON_STROKE[item.c]}"` : ''}></div>`;
+      const current = m === TODAY_MONTH ? ' current-month' : '';
+      cells += `<div class="cell${on ? ' on' : ''}${current}" role="cell" aria-label="${item.n}, ${MONTHS_LONG[m-1]}: ${status}"${on ? ` style="--c:${item.c};--c-stroke:${SEASON_STROKE[item.c]}"` : ''}></div>`;
     }
     return `<div class="p-row" data-name="${item.n.toLowerCase()}" role="row">
       <div class="p-row-label" role="rowheader" data-item="${item.n}" tabindex="0"><span class="p-icon" aria-hidden="true" style="--c-bg:${SEASON_BG[item.c]}">${ITEM_ICONS[item.n]}</span><span class="p-name">${item.n}</span></div>
@@ -923,7 +926,7 @@
 
   function headerRowHTML(label){
     const months = MONTHS_FULL.map((full, idx) =>
-      `<div class="m-head" role="columnheader"><span class="full" aria-hidden="true">${full}</span><span class="short" aria-hidden="true">${MONTHS_SHORT[idx]}</span><span class="sr-only">${MONTHS_LONG[idx]}</span></div>`
+      `<div class="m-head${idx + 1 === TODAY_MONTH ? ' current-month' : ''}" role="columnheader"><span class="full" aria-hidden="true">${full}</span><span class="short" aria-hidden="true">${MONTHS_SHORT[idx]}</span><span class="sr-only">${MONTHS_LONG[idx]}</span></div>`
     ).join('');
     return `<div class="cat-label" role="columnheader">${label}</div>${months}`;
   }
@@ -994,14 +997,14 @@
     btn.textContent = MONTHS_FULL[idx];
     btn.setAttribute('aria-label', name);
     btn.dataset.month = idx + 1;
-    btn.setAttribute('aria-pressed', idx + 1 === 9 ? 'true' : 'false');
+    btn.setAttribute('aria-pressed', idx + 1 === TODAY_MONTH ? 'true' : 'false');
     btn.addEventListener('click', () => setMonth(idx + 1));
     picker.appendChild(btn);
 
     const opt = document.createElement('option');
     opt.value = idx + 1;
     opt.textContent = name;
-    if (idx + 1 === 9) opt.selected = true;
+    if (idx + 1 === TODAY_MONTH) opt.selected = true;
     monthSelect.appendChild(opt);
   });
   monthSelect.addEventListener('change', () => setMonth(Number(monthSelect.value)));
@@ -1013,7 +1016,6 @@
     if (selected) selected.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
 
-  const TODAY_MONTH = 9; // "today" for Home — independent of whatever month is selected in the By Month view
   let selectedMonth = TODAY_MONTH;
   function setMonth(m){
     selectedMonth = m;
